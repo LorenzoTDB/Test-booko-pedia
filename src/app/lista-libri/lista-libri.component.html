@@ -1,0 +1,59 @@
+<app-header></app-header>
+<div class="container mt-5 mb-2">
+  <div class="row">
+    <div class="col-6">
+      <div class="input-group flex-nowrap" style="margin-left: 4%; width: 95.5%;">
+        <span class="input-group-text" id="addon-wrapping"><i class="bi bi-search"></i></span>
+        <input (keyup)="searchBook()" type="text" class="form-control" placeholder="Cerca libri"
+          aria-label="Cerca libri" aria-describedby="addon-wrapping" [(ngModel)]="service.filterSearch">
+      </div>
+    </div>
+    <div class="col-6">
+      <select style="margin-left: 0.5%; width: 95.5%;" class="form-select" aria-label="Default select example"
+        (change)="numberOfBooks($event)">
+        <option>Numero libri per pagina</option>
+        <option value="5" [attr.selected]="service.pageSize == 5 ? true : null">5</option>
+        <option value="10" [attr.selected]="service.pageSize == 10 ? true : null">10</option>
+        <option value="15" [attr.selected]="service.pageSize == 15 ? true : null">15</option>
+        <option value="20" [attr.selected]="service.pageSize == 20 ? true : null">20</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <nav style="padding-left: 41%" class="mt-4" aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="service.startingPage === 0"><a class="page-link"
+            style="cursor: pointer;" (click)="previousPage()">Precedente</a></li>
+        <li class="page-item" [class.disabled]="service.startingPage === 15 || count == 20 || disableNext"
+          style="margin-left: 4%; cursor: pointer;"><a class="page-link" (click)="nextPage()">Sucessiva</a></li>
+      </ul>
+    </nav>
+    <div class="card col-2 m-3  bg-light" style="width: 18rem;" *ngFor="let item of dati">
+      <img *ngIf="item.volumeInfo.imageLinks" src="{{item.volumeInfo.imageLinks.smallThumbnail}}" class="img-thumbnail"
+        alt="..." style="max-width:50%; max-height: 50%;">
+      <img *ngIf="!item.volumeInfo.imageLinks" src="../../assets/imgNotavailable.png" alt="" class="img-thumbnail"
+        style="max-width:50%; max-height: 70%;">
+      <div class="card-body">
+        <h5 class="card-title">{{item.volumeInfo.title}}</h5>
+        <p class="card-text">
+          <span *ngIf="item.volumeInfo.subtitle">{{item.volumeInfo.subtitle | slice:0:58}}...</span>
+          <span *ngIf="!item.volumeInfo.subtitle">Sottotitolo non disponibile.</span>
+          <a data-bs-toggle="tooltip" data-bs-placement="top" title="Vai al dettaglio"
+            style="position: absolute; top:5px; right: 5px;" href="#" class="btn btn-success"
+            (click)="getDetail(item.volumeInfo)" [routerLink]="['/dettaglio',item.id]"><i class="bi bi-arrow-right"
+              style="font-size: 23px;"></i></a>
+        </p>
+      </div>
+    </div>
+    <nav style="padding-left: 41%" class="mt-4" aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="service.startingPage === 0"><a class="page-link"
+            style="cursor: pointer;" (click)="previousPage()">Precedente</a></li>
+        <li class="page-item" [class.disabled]="service.startingPage === 15 || count == 20 || disableNext"
+          style="margin-left: 4%; cursor: pointer;"><a class="page-link" (click)="nextPage()">Successiva</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>

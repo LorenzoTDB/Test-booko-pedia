@@ -1,0 +1,57 @@
+<app-header></app-header>
+<div>
+  <img src="{{service.dataDetail.imageLinks.thumbnail}}" class="rounded mx-auto mt-3 d-block" alt="..." style="height: auto; width:15%">
+  <div class="text-center mt-2">
+    <h2>{{service.dataDetail.title}}</h2>
+    <p>{{service.dataDetail.subtitle}}</p>
+  </div>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Descrizione</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Autore</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Info</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active p-3" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <p>
+        {{service.dataDetail.description}}
+      </p>
+    </div>
+    <div class="tab-pane fade p-3" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <p>
+        {{service.dataDetail.authors}}
+      </p>
+    </div>
+    <div class="tab-pane fade p-3" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Data Pubblicazione</th>
+            <th scope="col">Casa Editrice</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Lingua</th>
+            <th scope="col">Formato</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{service.dataDetail.publishedDate}}</td>
+            <td>{{service.dataDetail.publisher}}</td>
+            <td>{{service.dataDetail.categories}}</td>
+            <td>{{service.dataDetail.language}}</td>
+            <td>{{service.dataDetail.printType}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        Per ulteriori informazioni consultare il seguente link : <a target="_blank" href="{{service.dataDetail.infoLink}}">Link Google</a>
+      </p>
+    </div>
+  </div>
+</div>
+

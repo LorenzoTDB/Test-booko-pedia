@@ -27,7 +27,7 @@
         <li class="page-item" [class.disabled]="service.startingPage === 0"><a class="page-link"
             style="cursor: pointer;" (click)="previousPage()">Precedente</a></li>
         <li class="page-item" [class.disabled]="service.startingPage === 15 || count == 20 || disableNext"
-          style="margin-left: 4%; cursor: pointer;"><a class="page-link" (click)="nextPage()">Sucessiva</a></li>
+          style="margin-left: 4%; cursor: pointer;"><a class="page-link" (click)="nextPage()">Successiva</a></li>
       </ul>
     </nav>
     <div class="card col-2 m-3  bg-light" style="width: 18rem;" *ngFor="let item of dati">

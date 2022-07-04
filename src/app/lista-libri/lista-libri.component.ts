@@ -23,6 +23,7 @@ export class ListaLibriComponent implements OnInit {
   getData() {
     this.ngxService.start();
     this.service.getLibri().subscribe((data: any) => {
+      console.log(data);
       this.dati = data.items
       this.count = this.service.pageSize;
       this.ngxService.stop();

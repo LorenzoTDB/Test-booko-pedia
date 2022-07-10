@@ -1,7 +1,9 @@
 <app-header></app-header>
 <div>
-  <img src="{{service.dataDetail.imageLinks.thumbnail}}" class="rounded mx-auto mt-3 d-block" alt="..."
-    style="height: auto; width:15%">
+  <img *ngIf="service.dataDetail.imageLinks" src="{{service.dataDetail.imageLinks.thumbnail}}"
+    class="rounded mx-auto mt-3 d-block" alt="..." style="height: auto; width:15%">
+  <img *ngIf="!service.dataDetail.imageLinks" src="../../assets/imgNotavailable.png" alt="" class="img-thumbnail"
+    style="height: auto; width:15%" class="rounded mx-auto mt-3 d-block">
   <div class="text-center mt-2">
     <h2>{{service.dataDetail.title}}</h2>
     <p>{{service.dataDetail.subtitle}}</p>
